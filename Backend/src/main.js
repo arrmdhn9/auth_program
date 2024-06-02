@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const chalk = require("chalk");
 const authController = require("./routes/authRoute");
+const cors = require("cors");
 
 // db
 const database = require("./configs/database");
@@ -14,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 
 app.use(express.json()); // Middleware untuk parsing JSON
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello world!" });
